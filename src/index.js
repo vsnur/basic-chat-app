@@ -31,8 +31,8 @@ io.on('connection', (socket) => {
 
         socket.join(user.room)
 
-        socket.emit('message', generateMessage("Moobot", `${user.username} has been forced into this chat`))
-        socket.broadcast.to(user.room).emit('message', generateMessage(`Shit ${user.username} has entered the chat `)) // Emits to all user except the current user
+        socket.emit('message', generateMessage("Moobot", `${user.username} has entered the chat.`))
+        socket.broadcast.to(user.room).emit('message', generateMessage(`${user.username} is sliding into this chat.`)) // Emits to all user except the current user
         io.to(user.room).emit('roomData', {
             room: user.room,
             users: getUsersInRoom(user.room)
